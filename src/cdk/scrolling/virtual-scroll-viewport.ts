@@ -359,7 +359,9 @@ export class CdkVirtualScrollViewport extends CdkVirtualScrollable implements On
     let transform = `translate${axis}(${Number(axisDirection * offset)}px)`;
     this._renderedContentOffset = offset;
     if (to === 'to-end') {
-      transform += ` translate${axis}(-100%)`;
+      // Commented out to fix issue where scroll jumps down when dragging up with drag and drop
+      // transform += ` translate${axis}(-100%)`;
+
       // The viewport should rewrite this as a `to-start` offset on the next render cycle. Otherwise
       // elements will appear to expand in the wrong direction (e.g. `mat-expansion-panel` would
       // expand upward).
